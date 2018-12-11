@@ -45,6 +45,12 @@ public class HomeFragment extends Fragment {
         homeHello = getActivity().findViewById(R.id.home_text);
         homeHello2 = getActivity().findViewById(R.id.home_text2);
 
+        profileSetup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addFragment(new ProfileFragment());
+            }
+        });
         myFriends.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,6 +70,7 @@ public class HomeFragment extends Fragment {
         String name = preferences.getString("name","null");
 
         homeHello.setText(String.format("Hello %s", name));
+        homeHello2.setText("this is my quote “today is my day”");
 
     }
 
