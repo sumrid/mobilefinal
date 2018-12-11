@@ -53,34 +53,24 @@ public class RegisterFragment extends Fragment {
         String ageStr = age.getText().toString();
         String passwordStr = password.getText().toString();
 
-//        if (useridStr.isEmpty() || useridStr.length()>12 || useridStr.length()<6) {
-//            userid.setError("6 ถึง 12 ตัว");
-//        } else if (!nameStr.isEmpty()) {
-//
-//            String[] text = null;
-//            if (!nameStr.isEmpty()) text = nameStr.trim().split(" ");
-//
-//            if(text.length < 2 ) {
-//                name.setError("");
-//            }
-//
-//            return;
-//        } else if (!ageStr.isEmpty()) {
-//            int age = Integer.parseInt(ageStr);
-//            if(age < 10 || age > 80) {
-//                this.age.setError("10 - 80");
-//            }
-//
-//        } else if (passwordStr.isEmpty()) {
-//            password.setError("กรุณากรอกข้อมูล");
-//        } else {
-//            Toast.makeText(getContext(), "regis", Toast.LENGTH_SHORT).show();
-//        }
-
         if(useridStr.isEmpty() || nameStr.isEmpty() || ageStr.isEmpty() || passwordStr.isEmpty()) {
             Toast.makeText(getContext(), "กรุณากรอกข้อมูล", Toast.LENGTH_SHORT).show();
         } else {
-            regist(useridStr, nameStr, ageStr, passwordStr);
+            int age = Integer.parseInt(ageStr);
+
+            String[] text = {""};
+            text = nameStr.trim().split(" ");
+
+            if(useridStr.length() <6 || useridStr.length()>12) {
+                userid.setError("6 ถึง 12 ตัว");
+            } else if (text.length<2){
+                name.setError("");
+            } else if (age < 10 || age > 80) {
+                this.age.setError("10 - 80");
+            }
+            else {
+                regist(useridStr, nameStr, ageStr, passwordStr);
+            }
         }
     }
 
